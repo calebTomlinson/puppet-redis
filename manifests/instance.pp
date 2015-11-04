@@ -118,6 +118,7 @@ define redis::instance (
   $redis_slave_output_buffer_soft_limit = $redis::params::redis_slave_output_buffer_soft_limit,
   $redis_slave_output_buffer_soft_limit_max_interval = $redis::params::redis_slave_output_buffer_soft_limit_max_interval,
   $redis_snapshotting = $redis::params::redis_snapshotting,
+  $redis_tcp_keepalive = $redis::params::redis_tcp_keepalive,
   $manage_config_file = $redis::params::manage_config_file
   ) {
 
