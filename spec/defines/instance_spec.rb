@@ -50,10 +50,16 @@ describe 'redis::instance', :type => 'define' do
       }
     end # let
 
+    let :facts do
+      {
+          :osfamily  => 'Debian'
+      }
+    end # let
+
     it do
       should contain_file('redis_port_6900.conf').with_content(/^port 6900$/)
-      should contain_file('redis_port_6900.conf').with_content(/^pidfile \/var\/run\/redis_6900\.pid$/)
-      should contain_file('redis_port_6900.conf').with_content(/^logfile \/var\/log\/redis_6900\.log$/)
+      should contain_file('redis_port_6900.conf').with_content(/pidfile \/var\/run\/redis\/redis_6900\.pid/)
+      should contain_file('redis_port_6900.conf').with_content(/^logfile \/var\/log\/redis\/redis_6900\.log$/)
       should contain_file('redis_port_6900.conf').with_content(/^dir \/var\/lib\/redis\/6900$/)
       should contain_file('redis-init-6900').with_content(/^REDIS_PORT="6900"$/)
     end # it
@@ -64,6 +70,12 @@ describe 'redis::instance', :type => 'define' do
       {
         :redis_port => '6900',
         :redis_bind_address => '10.1.2.3'
+      }
+    end # let
+
+    let :facts do
+      {
+          :osfamily  => 'Debian'
       }
     end # let
 
